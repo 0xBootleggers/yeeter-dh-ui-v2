@@ -1,14 +1,8 @@
-import { ChangeEvent, ReactNode } from "react";
+import { ReactNode } from "react";
 import styled from "styled-components";
 
 import { Noun } from "@daohaus/utils";
-import {
-  H1,
-  ParLg,
-  SingleColumnLayout,
-  useBreakpoint,
-  widthQuery,
-} from "@daohaus/ui";
+import { H1, SingleColumnLayout, useBreakpoint, widthQuery } from "@daohaus/ui";
 // import SearchInput from "./SearchInput";
 import { useDHConnect } from "@daohaus/connect";
 import { getNetworkName } from "@daohaus/keychain-utils";
@@ -16,8 +10,6 @@ import { getNetworkName } from "@daohaus/keychain-utils";
 type ListActionsProps = {
   children: ReactNode;
   searchTerm: string;
-  sortBy: string;
-  switchSortBy: (event: ChangeEvent<HTMLSelectElement>) => void;
   setSearchTerm: (term: string) => void;
   totalDaos: number;
   noun: Noun;
@@ -46,8 +38,6 @@ export const ListActions = ({
   children,
   searchTerm,
   setSearchTerm,
-  totalDaos,
-  noun,
 }: ListActionsProps) => {
   const { chainId } = useDHConnect();
   const isMobile = useBreakpoint(widthQuery.sm);

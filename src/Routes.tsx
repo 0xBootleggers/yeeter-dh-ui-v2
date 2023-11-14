@@ -10,7 +10,6 @@ import { ReactSetter } from "@daohaus/utils";
 import { MULTI_DAO_ROUTER } from "@daohaus/moloch-v3-hooks";
 
 import Dao from "./pages/Dao";
-import { FormTest } from "./pages/FormTest";
 import { Home } from "./pages/Home";
 import { TARGET_DAO } from "./targetDao";
 import { HomeContainer } from "./components/layout/HomeContainer";

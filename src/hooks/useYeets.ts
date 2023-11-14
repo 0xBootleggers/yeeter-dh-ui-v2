@@ -2,7 +2,7 @@ import { useQuery } from "react-query";
 import { GraphQLClient } from "graphql-request";
 
 import { LIST_YEETS } from "../utils/graphQueries";
-import { GRAPH_URL } from "../utils/constants";
+import { GRAPH_URL, getValidChainId } from "../utils/constants";
 
 export const useYeets = ({
   chainId,
