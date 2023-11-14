@@ -1,10 +1,8 @@
-import React from "react";
-import { H2, SingleColumnLayout } from "@daohaus/ui";
+import { HomeDashboard } from "../components/hub/HomeDashboard";
+import { useConnect } from "@daohaus/connect-context";
+import { DEFAULT_CHAIN_ID } from "../utils/constants";
 
 export const Explore = () => {
-  return (
-    <SingleColumnLayout>
-      <H2>Explore</H2>
-    </SingleColumnLayout>
-  );
+  const { chainId } = useConnect();
+  return <HomeDashboard chainId={chainId || DEFAULT_CHAIN_ID} />;
 };

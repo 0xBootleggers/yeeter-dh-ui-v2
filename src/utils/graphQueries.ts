@@ -1,26 +1,40 @@
 import { gql } from "graphql-request";
 
+const yeeterFields = `
+id
+createdAt
+dao {
+  id
+}
+endTime
+startTime
+isShares
+multiplier
+minTribute
+maxTarget
+balance
+`;
+
 export const GET_YEETER = gql`
   query yeeter($shamanAddress: String!) {
     yeeter(id: $shamanAddress) {
-      id
-      createdAt
-      dao {
-        id
-      }
-      endTime
-      startTime
-      isShares
-      multiplier
-      minTribute
-      maxTarget
+      ${yeeterFields}
+    }
+  }
+`;
+
+export const GET_YEETERS = gql`
+  {
+    yeeters(first: 1000) {
+      ${yeeterFields}
+
     }
   }
 `;
 
 export const LIST_YEETS = gql`
   query yeets($shamanAddress: String!) {
-    yeeter(
+    yeets(
       where: { yeeter: $shamanAddress }
       orderBy: createdAt
       order: desc

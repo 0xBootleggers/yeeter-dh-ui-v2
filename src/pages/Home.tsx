@@ -1,18 +1,8 @@
 import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
 
-import {
-  H2,
-  Link,
-  ParMd,
-  SingleColumnLayout,
-  LinkStyles,
-  H1,
-  ParLg,
-} from "@daohaus/ui";
+import { H2, SingleColumnLayout, LinkStyles, H1, ParLg } from "@daohaus/ui";
 
-import { HausAnimated } from "../components/HausAnimated";
-import { TARGET_DAO } from "../targetDao";
 import { ButtonRouterLink } from "../components/ButtonRouterLink";
 
 const LinkBox = styled.div`
@@ -46,9 +36,6 @@ const StyledH2 = styled(H2)`
 `;
 
 export const Home = () => {
-  const hasTargetDao =
-    TARGET_DAO[import.meta.env.VITE_TARGET_KEY]?.CHAIN_ID !== undefined;
-
   return (
     <SingleColumnLayout>
       <Contain>

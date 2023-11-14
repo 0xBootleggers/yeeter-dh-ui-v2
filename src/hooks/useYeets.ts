@@ -11,10 +11,11 @@ export const useYeets = ({
   chainId?: string;
   shamanAddress?: string;
 }) => {
-  const graphQLClient = new GraphQLClient(GRAPH_URL[chainId || "0x5"]);
+  const chain = getValidChainId(chainId);
+  const graphQLClient = new GraphQLClient(chain);
 
   const { data, ...rest } = useQuery(
-    ["get-yeeter", { shamanAddress }],
+    ["list-yeetes", { shamanAddress }],
     async () => {
       const res = await graphQLClient.request(LIST_YEETS, {
         shamanAddress: shamanAddress?.toLowerCase(),
