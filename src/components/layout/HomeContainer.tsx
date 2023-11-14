@@ -11,8 +11,9 @@ export const HomeContainer = () => {
       pathname={location.pathname}
       navLinks={[
         { label: "Home", href: `/` },
-        { label: "Explore", href: `explore` },
-        { label: "Launch", href: `launch` },
+        { label: "Explore", href: `/explore` },
+        { label: "Launch", href: `/launch` },
+        { label: "WTF", href: `/wtf` },
       ]}
       footer={<Footer />}
     >

@@ -19,6 +19,7 @@ import UpdateSettings from "./pages/UpdateSettings";
 import { Explore } from "./pages/Explore";
 import { Launch } from "./pages/Launch";
 import { Yeet } from "./pages/Yeet";
+import { Wtf } from "./pages/Wtf";
 
 export const Routes = ({
   setDaoChainId,
@@ -46,6 +47,7 @@ export const Routes = ({
         <Route index element={<Home />} />
         <Route path="explore" element={<Explore />} />
         <Route path="launch" element={<Launch />} />
+        <Route path="wtf" element={<Wtf />} />
       </Route>
       <Route path={MULTI_DAO_ROUTER} element={<DaoContainer />}>
         <Route index element={<Dao />} />
