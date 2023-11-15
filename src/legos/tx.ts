@@ -1,3 +1,4 @@
+import { TXLego } from "@daohaus/utils";
 import { APP_CONTRACT } from "./contract";
 
 export enum ProposalTypeIds {
@@ -13,7 +14,7 @@ export enum ProposalTypeIds {
   WalletConnect = "WALLETCONNECT",
 }
 
-export const APP_TX = {
+export const APP_TX: Record<string, TXLego> = {
   YEETER_SUMMON: {
     id: "YEETER_SUMMON",
     contract: APP_CONTRACT.YEETER_SUMMONER,
@@ -23,5 +24,11 @@ export const APP_TX = {
     //   fetch: pollLastTXSilo,
     //   test: testLastTXSilo,
     // },
+  },
+  YEET: {
+    id: "YEET",
+    contract: APP_CONTRACT.YEETER_SHAMAN,
+    method: "contributeEth",
+    args: [".formValues.amount", ".formValues.message"],
   },
 };

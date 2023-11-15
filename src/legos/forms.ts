@@ -9,7 +9,7 @@ export const APP_FORM: Record<string, CustomFormLego> = {
       amount: true,
     },
     log: true,
-    tx: APP_TX.YEETER_SUMMON,
+    tx: APP_TX.YEET,
     fields: [
       {
         id: "amount",

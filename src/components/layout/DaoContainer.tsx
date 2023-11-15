@@ -47,6 +47,8 @@ const Dao = ({
 
   const routePath = `molochv3/${daoChain}/${daoId}`;
 
+  // TODO: get better shaman address
+
   return (
     <DHLayout
       pathname={location.pathname}
@@ -81,7 +83,11 @@ const Dao = ({
           chainId={daoChain}
           daoId={daoId}
           safeId={dao?.safeAddress}
-          appState={{ dao, memberAddress: address }}
+          appState={{
+            dao,
+            memberAddress: address,
+            // shamanAddress: "0xabB02c010D110D55ed0c0857eCf02754D68f4239",
+          }}
         >
           <Outlet />
         </TXBuilder>
