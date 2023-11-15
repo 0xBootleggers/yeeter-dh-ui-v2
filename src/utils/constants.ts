@@ -1,9 +1,9 @@
 import {
   HAUS_NETWORK_DATA,
   Keychain,
+  KeychainList,
   NetworkConfig,
   ValidNetwork,
-  isValidNetwork,
 } from "@daohaus/keychain-utils";
 
 type KEYCHAIN = {
