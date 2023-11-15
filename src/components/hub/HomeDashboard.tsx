@@ -1,13 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
-import {
-  H2,
-  Loading,
-  useBreakpoint,
-  useDebounce,
-  widthQuery,
-} from "@daohaus/ui";
+import { H2, Loading, useBreakpoint, widthQuery } from "@daohaus/ui";
 import { ListActions } from "./ListActions";
 import { DaoList } from "./DaoList";
 import { useYeeters } from "../../hooks/useYeeters";

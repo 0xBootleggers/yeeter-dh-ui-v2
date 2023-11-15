@@ -6,6 +6,7 @@ import { H1, SingleColumnLayout, useBreakpoint, widthQuery } from "@daohaus/ui";
 // import SearchInput from "./SearchInput";
 import { useDHConnect } from "@daohaus/connect";
 import { getNetworkName } from "@daohaus/keychain-utils";
+import { DEFAULT_CHAIN_ID } from "../../utils/constants";
 
 type ListActionsProps = {
   children: ReactNode;
@@ -39,7 +40,11 @@ export const ListActions = ({
   searchTerm,
   setSearchTerm,
 }: ListActionsProps) => {
-  const { chainId } = useDHConnect();
+  // const { chainId } = useConnect();
+  // console.log("chainId", chainId);
+  // todo: pass connected chain when multichain and handle wrong chain
+
+  const chainId = DEFAULT_CHAIN_ID;
   const isMobile = useBreakpoint(widthQuery.sm);
 
   return (

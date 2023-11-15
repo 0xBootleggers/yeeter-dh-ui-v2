@@ -1,5 +1,3 @@
-import { POSTER_TAGS } from "@daohaus/utils";
-import { buildMultiCallTX } from "@daohaus/tx-builder";
 import { APP_CONTRACT } from "./contract";
 
 export enum ProposalTypeIds {
@@ -16,37 +14,14 @@ export enum ProposalTypeIds {
 }
 
 export const APP_TX = {
-  TEST_TX: buildMultiCallTX({
-    id: "TEST_TX",
-    JSONDetails: {
-      type: "JSONDetails",
-      jsonSchema: {
-        title: `.formValues.title`,
-        description: `.formValues.description`,
-        contentURI: `.formValues.link`,
-        contentURIType: { type: "static", value: "url" },
-        proposalType: { type: "static", value: ProposalTypeIds.Signal },
-      },
-    },
-    actions: [
-      {
-        contract: APP_CONTRACT.POSTER,
-        method: "post",
-        args: [
-          {
-            type: "JSONDetails",
-            jsonSchema: {
-              title: `.formValues.title`,
-              description: `.formValues.description`,
-              superSignal: `.formValues.testField`,
-              contentURI: `.formValues.link`,
-              contentURIType: { type: "static", value: "url" },
-              proposalType: { type: "static", value: ProposalTypeIds.Signal },
-            },
-          },
-          { type: "static", value: POSTER_TAGS.signalProposal },
-        ],
-      },
-    ],
-  }),
+  YEETER_SUMMON: {
+    id: "YEETER_SUMMON",
+    contract: APP_CONTRACT.YEETER_SUMMONER,
+    method: "summonBaalFromReferrer",
+    argCallback: "assembleYeeterSummonerArgs",
+    // customPoll: {
+    //   fetch: pollLastTXSilo,
+    //   test: testLastTXSilo,
+    // },
+  },
 };

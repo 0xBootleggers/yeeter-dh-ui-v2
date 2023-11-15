@@ -83,7 +83,7 @@ export const DaoCard = ({
       <ButtonRouterLink
         color="secondary"
         fullWidth
-        to={`/molochv3/${chainId}/${yeeter.id}`}
+        to={`/molochv3/${chainId}/${yeeter.dao.id}`}
       >
         Go
       </ButtonRouterLink>

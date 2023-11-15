@@ -1,25 +1,85 @@
-import { FIELD } from "@daohaus/moloch-v3-legos";
-import { CustomFormLego } from "./legoConfig";
-import { APP_FIELD } from "./fields";
 import { APP_TX } from "./tx";
-
-const PROPOSAL_SETTINGS_FIELDS = [FIELD.PROPOSAL_EXPIRY, FIELD.PROP_OFFERING];
+import { CustomFormLego } from "./legoConfig";
 
 export const APP_FORM: Record<string, CustomFormLego> = {
-  TEST_FORM: {
-    id: "TEST_FORM",
-    title: "Super Signal Form",
-    subtitle: "Super Signal Proposal",
-    description: "Ratify on-chain using a DAO proposal.",
-    requiredFields: { title: true, description: true, testField: true },
+  SUMMON_YEETER: {
+    id: "SUMMON_YEETER",
+    title: "NEW YEET",
+    requiredFields: {
+      daoName: true,
+      maxTarget: true,
+      startTime: true,
+      endTime: true,
+      minTribute: true,
+      multiplier: true,
+      members: true,
+    },
     log: true,
-    tx: APP_TX.TEST_TX,
+    tx: APP_TX.YEETER_SUMMON,
     fields: [
-      FIELD.TITLE,
-      FIELD.DESCRIPTION,
-      FIELD.LINK,
-      APP_FIELD.TEST_FIELD,
-      ...PROPOSAL_SETTINGS_FIELDS,
+      {
+        id: "daoName",
+        type: "input",
+        label: "Name",
+        placeholder: "Yeet Yeet",
+      },
+      {
+        id: "members",
+        type: "membersInput",
+        label: "Team Members",
+        placeholder: "Yeet Yeet",
+        info: "Input member list with member address on each line.",
+      },
+
+      {
+        id: "times",
+        type: "splitColumn",
+        rows: [
+          {
+            rowId: "row1",
+            left: {
+              id: "startTime",
+              type: "epochDatePicker",
+              label: "Start Time",
+              expectType: "number",
+            },
+            right: {
+              id: "endTime",
+              type: "epochDatePicker",
+              label: "End Time",
+              expectType: "number",
+            },
+          },
+        ],
+      },
+      {
+        id: "maxTarget",
+        type: "toWeiInput",
+        label: "Fundraising Goal (ETH)",
+        placeholder: "69,420",
+        expectType: "number",
+      },
+      {
+        id: "tribute",
+        type: "splitColumn",
+        rows: [
+          {
+            rowId: "row1",
+            left: {
+              id: "minTribute",
+              type: "toWeiInput",
+              label: "Minimum Tribute (ETH)",
+              placeholder: "0.01",
+              expectType: "number",
+            },
+            right: {
+              id: "multiplier",
+              type: "lootPerYeet",
+              label: "Loot per Minimum Tribute",
+            },
+          },
+        ],
+      },
     ],
   },
 };
