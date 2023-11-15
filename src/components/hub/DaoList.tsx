@@ -23,7 +23,11 @@ const CardListBox = styled.div`
 `;
 
 const DaoCards = ({ daoData }: { daoData: YeeterItem[] }) => {
-  const { chainId } = useConnect();
+  // const { chainId } = useConnect();
+  // console.log("chainId", chainId);
+  // todo: pass connected chain when multichain and handle wrong chain
+
+  const chainId = DEFAULT_CHAIN_ID;
 
   return (
     <CardListBox>

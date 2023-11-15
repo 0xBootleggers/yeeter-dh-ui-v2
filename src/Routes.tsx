@@ -19,6 +19,7 @@ import { Explore } from "./pages/Explore";
 import { Launch } from "./pages/Launch";
 import { Yeet } from "./pages/Yeet";
 import { Wtf } from "./pages/Wtf";
+import { Success } from "./pages/Success";
 
 export const Routes = ({
   setDaoChainId,
@@ -47,6 +48,7 @@ export const Routes = ({
         <Route path="explore" element={<Explore />} />
         <Route path="launch" element={<Launch />} />
         <Route path="wtf" element={<Wtf />} />
+        <Route path={`success/:daoId`} element={<Success />} />
       </Route>
       <Route path={MULTI_DAO_ROUTER} element={<DaoContainer />}>
         <Route index element={<Dao />} />

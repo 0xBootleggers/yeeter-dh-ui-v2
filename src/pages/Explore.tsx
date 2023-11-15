@@ -4,5 +4,8 @@ import { DEFAULT_CHAIN_ID } from "../utils/constants";
 
 export const Explore = () => {
   const { chainId } = useConnect();
-  return <HomeDashboard chainId={chainId || DEFAULT_CHAIN_ID} />;
+
+  console.log("chainId", chainId);
+  // todo: pass connected chain when multichain and handle wrong chain
+  return <HomeDashboard chainId={DEFAULT_CHAIN_ID} />;
 };

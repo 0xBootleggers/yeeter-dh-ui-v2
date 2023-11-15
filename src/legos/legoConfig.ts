@@ -4,10 +4,14 @@ import { COMMON_FORMS, PROPOSAL_FORMS } from "@daohaus/moloch-v3-legos";
 
 import { APP_FORM } from "./forms";
 import { TestField } from "../components/customFields/fieldTest";
+import { MembersInput } from "../components/customFields/MembersInput";
+import { LootPerYeet } from "../components/customFields/LootPerYeet";
 
 export const AppFieldLookup = {
   ...MolochFields,
   testField: TestField,
+  membersInput: MembersInput,
+  lootPerYeet: LootPerYeet,
 };
 
 export type CustomFieldLego = FieldLegoBase<typeof AppFieldLookup>;

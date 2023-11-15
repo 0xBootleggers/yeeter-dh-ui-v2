@@ -1,5 +1,4 @@
-import { POSTER_TAGS } from "@daohaus/utils";
-import { buildMultiCallTX } from "@daohaus/tx-builder";
+import { TXLego } from "@daohaus/utils";
 import { APP_CONTRACT } from "./contract";
 
 export enum ProposalTypeIds {
@@ -15,38 +14,21 @@ export enum ProposalTypeIds {
   WalletConnect = "WALLETCONNECT",
 }
 
-export const APP_TX = {
-  TEST_TX: buildMultiCallTX({
-    id: "TEST_TX",
-    JSONDetails: {
-      type: "JSONDetails",
-      jsonSchema: {
-        title: `.formValues.title`,
-        description: `.formValues.description`,
-        contentURI: `.formValues.link`,
-        contentURIType: { type: "static", value: "url" },
-        proposalType: { type: "static", value: ProposalTypeIds.Signal },
-      },
-    },
-    actions: [
-      {
-        contract: APP_CONTRACT.POSTER,
-        method: "post",
-        args: [
-          {
-            type: "JSONDetails",
-            jsonSchema: {
-              title: `.formValues.title`,
-              description: `.formValues.description`,
-              superSignal: `.formValues.testField`,
-              contentURI: `.formValues.link`,
-              contentURIType: { type: "static", value: "url" },
-              proposalType: { type: "static", value: ProposalTypeIds.Signal },
-            },
-          },
-          { type: "static", value: POSTER_TAGS.signalProposal },
-        ],
-      },
-    ],
-  }),
+export const APP_TX: Record<string, TXLego> = {
+  YEETER_SUMMON: {
+    id: "YEETER_SUMMON",
+    contract: APP_CONTRACT.YEETER_SUMMONER,
+    method: "summonBaalFromReferrer",
+    argCallback: "assembleYeeterSummonerArgs",
+    // customPoll: {
+    //   fetch: pollLastTXSilo,
+    //   test: testLastTXSilo,
+    // },
+  },
+  YEET: {
+    id: "YEET",
+    contract: APP_CONTRACT.YEETER_SHAMAN,
+    method: "contributeEth",
+    args: [".formValues.amount", ".formValues.message"],
+  },
 };
