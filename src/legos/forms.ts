@@ -2,6 +2,30 @@ import { APP_TX } from "./tx";
 import { CustomFormLego } from "./legoConfig";
 
 export const APP_FORM: Record<string, CustomFormLego> = {
+  YEET_FORM: {
+    id: "YEET",
+    title: "YEET",
+    requiredFields: {
+      amount: true,
+    },
+    log: true,
+    tx: APP_TX.YEETER_SUMMON,
+    fields: [
+      {
+        id: "amount",
+        type: "toWeiInput",
+        label: "Yeet Amount",
+        placeholder: "Yeet Yeet",
+        expectType: "number",
+      },
+      {
+        id: "message",
+        type: "markdownField",
+        label: "Message",
+        placeholder: "yeet yeet yeet",
+      },
+    ],
+  },
   SUMMON_YEETER: {
     id: "SUMMON_YEETER",
     title: "NEW YEET",

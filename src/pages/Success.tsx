@@ -42,7 +42,7 @@ export const Success = () => {
         <StyledH1>AAAAAH SHIIIIIIIIT YOU MADE A YEETER!</StyledH1>
         <ButtonContainer>
           <Button color="secondary" fullWidth>
-            <LinkButton to={`${chainId}/${daoId}/`}>YEET</LinkButton>
+            <LinkButton to={`/molochV3/${chainId}/${daoId}/`}>YEET</LinkButton>
           </Button>
           {/* <Button color="secondary" fullWidth>
             <LinkButton to={`${chainId}/${daoId}/`}>SHARE</LinkButton>

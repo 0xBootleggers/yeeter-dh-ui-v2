@@ -10,7 +10,7 @@ export const Yeet = () => {
 
   return (
     <FormBuilder
-      form={APP_FORM.TEST_FORM}
+      form={APP_FORM.YEET_FORM}
       targetNetwork={daoChain}
       customFields={{ ...MolochFields, ...AppFieldLookup }}
     />
