@@ -4,17 +4,6 @@ import { GraphQLClient } from "graphql-request";
 import { GET_YEETER } from "../utils/graphQueries";
 import { GRAPH_URL, getValidChainId } from "../utils/constants";
 
-// const getUri = async ({ tokenId }: { tokenId: string }) => {
-//   const provider = new ethers.providers.JsonRpcProvider(RPC);
-//   const contract = new ethers.Contract(
-//     CONTRACT_ADDRESS,
-//     CONTRACT_ABI,
-//     provider
-//   );
-
-//   return await contract.functions.tokenURI(tokenId);
-// };
-
 export const useYeeter = ({
   chainId,
   shamanAddress,

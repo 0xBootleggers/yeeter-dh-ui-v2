@@ -1,5 +1,6 @@
 import { APP_TX } from "./tx";
 import { CustomFormLego } from "./legoConfig";
+import { FIELD } from "@daohaus/moloch-v3-legos";
 
 export const APP_FORM: Record<string, CustomFormLego> = {
   YEET_FORM: {
@@ -102,6 +103,42 @@ export const APP_FORM: Record<string, CustomFormLego> = {
               label: "Loot per Minimum Tribute",
             },
           },
+        ],
+      },
+    ],
+  },
+  METADATA_SETTINGS: {
+    id: "METADATA_SETTINGS",
+    title: "Update Metadata Settings",
+    subtitle: "Settings",
+    requiredFields: { name: true },
+    tx: APP_TX.UPDATE_METADATA_SETTINGS,
+    fields: [
+      {
+        ...FIELD.DESCRIPTION,
+        id: "projectDetails",
+        label: "Project Details",
+      },
+      {
+        ...FIELD.DESCRIPTION,
+        id: "missionStatement",
+        label: "Mission Statement",
+      },
+      { ...FIELD.LINK, id: "icon", label: "Campaign Icon" },
+      {
+        id: "links",
+        type: "formSegment",
+        title: "Add links to important content for your DAO",
+        fields: [
+          { ...FIELD.LINK, id: "discord", label: "Discord" },
+          { ...FIELD.METADATA_LINK, id: "github", label: "Github" },
+          { ...FIELD.METADATA_LINK, id: "blog", label: "Blog" },
+          { ...FIELD.METADATA_LINK, id: "telegram", label: "Telegram" },
+          { ...FIELD.METADATA_LINK, id: "twitter", label: "Twitter" },
+          { ...FIELD.METADATA_LINK, id: "web", label: "Website" },
+          { ...FIELD.METADATA_LINK, id: "custom1", label: "Custom Link 1" },
+          { ...FIELD.METADATA_LINK, id: "custom2", label: "Custom Link 2" },
+          { ...FIELD.METADATA_LINK, id: "custom3", label: "Custom Link 3" },
         ],
       },
     ],

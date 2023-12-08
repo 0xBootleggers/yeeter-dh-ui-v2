@@ -46,7 +46,7 @@ export const DEFAULT_YEETER_VALUES = {
   // endTime: (Date.parse("01 Jan 3000") / 1000).toFixed(0),
   multiplier: 100000,
   // minTribute: ethers.utils.parseEther("0.01"),
-  isShares: true,
+  isShares: false,
   feeRecipients: [],
   feeAmounts: [],
 };

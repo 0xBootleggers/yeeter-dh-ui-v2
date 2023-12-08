@@ -2,23 +2,7 @@ import { useQuery } from "react-query";
 import { GraphQLClient } from "graphql-request";
 
 import { GET_YEETERS } from "../utils/graphQueries";
-import {
-  DEFAULT_CHAIN_ID,
-  GRAPH_URL,
-  getValidChainId,
-} from "../utils/constants";
-// import { GET_YEETERS } from "../utils/graphQueries";
-
-// const getUri = async ({ tokenId }: { tokenId: string }) => {
-//   const provider = new ethers.providers.JsonRpcProvider(RPC);
-//   const contract = new ethers.Contract(
-//     CONTRACT_ADDRESS,
-//     CONTRACT_ABI,
-//     provider
-//   );
-
-//   return await contract.functions.tokenURI(tokenId);
-// };
+import { GRAPH_URL, getValidChainId } from "../utils/constants";
 
 export const useYeeters = ({ chainId }: { chainId?: string }) => {
   const chain = getValidChainId(chainId);
