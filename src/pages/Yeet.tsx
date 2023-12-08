@@ -3,30 +3,20 @@ import { MolochFields } from "@daohaus/moloch-v3-fields";
 
 import { APP_FORM } from "../legos/forms";
 import { AppFieldLookup } from "../legos/legoConfig";
-import { useCurrentDao, useDaoData } from "@daohaus/moloch-v3-hooks";
-import { useYeeter } from "../hooks/useYeeter";
+import { useCurrentDao } from "@daohaus/moloch-v3-hooks";
+import { useCurrentYeeter } from "../contexts/CurrentYeeterContext";
 
 export const Yeet = () => {
   const { daoChain } = useCurrentDao();
-  const { dao } = useDaoData();
-  // const {} = useYeeter();
+  const { shamanAddress } = useCurrentYeeter();
 
-  console.log("dao", dao);
-
-  if (!dao || !dao.shamen || !dao.shamen.length) return null;
-
-  return <YeeterForm shamanAddress={dao.shamen[0].shamanAddress} />;
-};
-
-const YeeterForm = ({ shamanAddress }: { shamanAddress: string }) => {
-  const { daoChain } = useCurrentDao();
+  if (!shamanAddress) return null;
 
   return (
     <FormBuilder
       form={APP_FORM.YEET_FORM}
       targetNetwork={daoChain}
       customFields={{ ...MolochFields, ...AppFieldLookup }}
-      defaultValues={{ shamanAddress }}
     />
   );
 };

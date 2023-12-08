@@ -13,6 +13,7 @@ multiplier
 minTribute
 maxTarget
 balance
+yeetCount
 `;
 
 export const GET_YEETER = gql`

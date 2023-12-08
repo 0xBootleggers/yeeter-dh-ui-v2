@@ -1,13 +1,21 @@
 import { useCurrentDao } from "@daohaus/moloch-v3-hooks";
-import { DaoOverview } from "@daohaus/moloch-v3-macro-ui";
 import { SingleColumnLayout } from "@daohaus/ui";
+import { useCurrentYeeter } from "../contexts/CurrentYeeterContext";
+import DaoOverview from "../components/DaoOverview";
 
 export function Dao() {
   const { daoChain, daoId } = useCurrentDao();
+  const { shamanAddress } = useCurrentYeeter();
 
   return (
     <SingleColumnLayout>
-      {daoId && daoChain && <DaoOverview daoChain={daoChain} daoId={daoId} />}
+      {daoId && daoChain && shamanAddress && (
+        <DaoOverview
+          daoChain={daoChain}
+          daoId={daoId}
+          shamanAddress={shamanAddress}
+        />
+      )}
     </SingleColumnLayout>
   );
 }

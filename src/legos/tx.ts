@@ -21,10 +21,6 @@ export const APP_TX: Record<string, TXLego> = {
     contract: APP_CONTRACT.YEETER_SUMMONER,
     method: "summonBaalFromReferrer",
     argCallback: "assembleYeeterSummonerArgs",
-    // customPoll: {
-    //   fetch: pollLastTXSilo,
-    //   test: testLastTXSilo,
-    // },
   },
   YEET: {
     id: "YEET",

@@ -5,6 +5,7 @@ import { TXBuilder } from "@daohaus/tx-builder";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import { CurrentDaoProvider, useDaoData } from "@daohaus/moloch-v3-hooks";
 import { HeaderAvatar } from "../HeaderAvatar";
+import { CurrentYeeterProvider } from "../../contexts/CurrentYeeterContext";
 
 export const DaoContainer = () => {
   const { proposalId, memberAddress, daoChain, daoId } = useParams<{
@@ -38,7 +39,6 @@ const Dao = ({
   memberAddress?: string;
 }) => {
   const location = useLocation();
-
   const { publicClient, address } = useDHConnect();
   const { dao } = useDaoData({
     daoId: daoId as string,
@@ -49,6 +49,11 @@ const Dao = ({
 
   // TODO: get better shaman address
 
+  const shamanAddress =
+    dao && dao.shamen && dao.shamen.length > 0
+      ? dao.shamen[0].shamanAddress
+      : undefined;
+
   return (
     <DHLayout
       pathname={location.pathname}
@@ -56,7 +61,6 @@ const Dao = ({
         { label: "Home", href: `/` },
         { label: "Dashboard", href: `/${routePath}` },
         { label: "Yeet", href: `/${routePath}/yeet` },
-        { label: "Update", href: `/${routePath}/update` },
       ]}
       leftNav={
         dao?.name &&
@@ -86,10 +90,12 @@ const Dao = ({
           appState={{
             dao,
             memberAddress: address,
-            // shamanAddress: "0xabB02c010D110D55ed0c0857eCf02754D68f4239",max_line_length
+            shamanAddress,
           }}
         >
-          <Outlet />
+          <CurrentYeeterProvider shamanAddress={shamanAddress}>
+            <Outlet />
+          </CurrentYeeterProvider>
         </TXBuilder>
       </CurrentDaoProvider>
     </DHLayout>

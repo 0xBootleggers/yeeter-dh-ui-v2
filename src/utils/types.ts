@@ -11,4 +11,22 @@ export type YeeterItem = {
   minTribute: string;
   maxTarget: string;
   balance: string;
+  yeetCount: string;
+};
+
+export type YeeterMetadata = {
+  daoId: string;
+  icon: string;
+  links: string[];
+  missionStatement: string;
+  projectDetails: string;
+};
+
+export type YeetsItem = {
+  amount: string;
+  contributor: string;
+  createdAt: string;
+  id: string;
+  message: string;
+  shares: string;
 };

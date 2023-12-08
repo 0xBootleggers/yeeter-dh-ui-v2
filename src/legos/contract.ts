@@ -15,6 +15,6 @@ export const APP_CONTRACT: Record<string, ContractLego> = {
     type: "static",
     contractName: "YeeterShaman",
     abi: yeeterShamanAbi,
-    targetAddress: ".formValues.shamanAddress",
+    targetAddress: ".shamanAddress",
   },
 };

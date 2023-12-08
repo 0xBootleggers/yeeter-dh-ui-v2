@@ -109,9 +109,7 @@ export const APP_FORM: Record<string, CustomFormLego> = {
   },
   METADATA_SETTINGS: {
     id: "METADATA_SETTINGS",
-    title: "Update Metadata Settings",
-    subtitle: "Settings",
-    requiredFields: { name: true },
+    title: "Update Yeet Details",
     tx: APP_TX.UPDATE_METADATA_SETTINGS,
     fields: [
       {
