@@ -19,10 +19,10 @@ export type YeeterItem = {
 
 export type YeeterMetadata = {
   daoId: string;
-  icon: string;
-  links: string[];
-  missionStatement: string;
-  projectDetails: string;
+  icon?: string;
+  links?: string[];
+  missionStatement?: string;
+  projectDetails?: string;
 };
 
 export type YeetsItem = {

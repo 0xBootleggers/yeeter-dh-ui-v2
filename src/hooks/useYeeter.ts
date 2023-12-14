@@ -46,10 +46,17 @@ export const useYeeter = ({
         isComingSoon: res.yeeter && calcYeetIsComingSoon(res.yeeter.startTime),
       } as YeeterItem;
 
+      console.log("yeeter", yeeter);
+
+      console.log("record", record);
+
       return {
         yeeter,
-        // @ts-expect-error
-        metadata: record.items[0].parsedContent as YeeterMetadata,
+        metadata: record?.items[0]
+          ? (record.items[0].parsedContent as YeeterMetadata)
+          : {
+              daoId: daoId,
+            },
       };
     },
     { enabled: !!shamanAddress && !!chainId && !!daoId }
