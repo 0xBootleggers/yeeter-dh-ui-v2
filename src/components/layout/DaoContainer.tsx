@@ -48,7 +48,6 @@ const Dao = ({
   const routePath = `molochv3/${daoChain}/${daoId}`;
 
   // TODO: get better shaman address
-
   const shamanAddress =
     dao && dao.shamen && dao.shamen.length > 0
       ? dao.shamen[0].shamanAddress
@@ -60,7 +59,6 @@ const Dao = ({
       navLinks={[
         { label: "Home", href: `/` },
         { label: "Dashboard", href: `/${routePath}` },
-        { label: "Yeet", href: `/${routePath}/yeet` },
       ]}
       leftNav={
         dao?.name &&

@@ -1,13 +1,9 @@
 import styled from "styled-components";
 import {
   DataIndicator,
-  H4,
-  SingleColumnLayout,
   Card,
   ProfileAvatar,
   widthQuery,
-  H3,
-  ParSm,
   ParXs,
 } from "@daohaus/ui";
 import {
@@ -22,31 +18,14 @@ import { useYeeter } from "../hooks/useYeeter";
 import { useYeets } from "../hooks/useYeets";
 import { ButtonRouterLink } from "./ButtonRouterLink";
 import { YeetsItem } from "../utils/types";
-
-export const OverviewCard = styled(Card)`
-  width: 64rem;
-  padding: 2rem;
-  border: none;
-  margin-bottom: 3.4rem;
-  @media ${widthQuery.md} {
-    max-width: 100%;
-    min-width: 0;
-  }
-`;
+import { DataGrid, OverviewCard } from "./layout/Shared";
+import { YeetProfile } from "./YeetProfile";
+import { ProfileButtons } from "./ProfileButtons";
+import { ProgressBar } from "./ProgressBar";
+import { YeetGoalProgress } from "./YeetGoalProgress";
 
 export const TokensCard = styled(OverviewCard)`
   padding: 2.4rem;
-`;
-
-export const DataGrid = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  flex-wrap: wrap;
-
-  div {
-    padding: 2rem 0;
-  }
 `;
 
 export const DaoProfileContainer = styled.div`
@@ -80,6 +59,25 @@ export const MissingProfileCard = styled(Card)`
   flex-direction: column;
   align-items: center;
   gap: 2.3rem;
+`;
+
+const ProgressRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .bar {
+    width: 80%;
+  }
+
+  @media ${widthQuery.xs} {
+    flex-direction: column;
+    .bar {
+      width: 100%;
+    }
+  }
 `;
 
 export const YeetList = styled.div`
@@ -129,49 +127,22 @@ export const DaoOverview = ({
   if (!dao) return null;
 
   return (
-    <SingleColumnLayout>
+    <>
       {dao && (
         <>
           <OverviewCard>
-            <div>
-              <H3>{dao.name}</H3>
-              <ParSm>{metadata?.projectDetails}</ParSm>
-
-              <DaoProfileAvatar
-                address={shamanAddress}
-                image={metadata?.icon}
+            {metadata && (
+              <YeetProfile
+                dao={dao}
+                daoChain={daoChain}
+                metadata={metadata}
+                shamanAddress={shamanAddress}
               />
-              <ParXs>{metadata?.missionStatement}</ParXs>
-              <ButtonRouterLink to="update" variant="link" size="sm">
-                Edit Yeet Details
-              </ButtonRouterLink>
-            </div>
+            )}
+
+            {yeeter && <YeetGoalProgress yeeter={yeeter} />}
             <DataGrid>
               <DataIndicator label="Total Yeets" data={yeeter?.yeetCount} />
-              <DataIndicator
-                label="Total Raised"
-                data={`${
-                  yeeter?.balance
-                    ? formatValueTo({
-                        value: fromWei(yeeter.balance),
-                        decimals: 3,
-                        format: "numberShort",
-                      })
-                    : "0"
-                } ETH`}
-              />
-              <DataIndicator
-                label="Goal"
-                data={`${
-                  yeeter?.balance
-                    ? formatValueTo({
-                        value: fromWei(yeeter.maxTarget),
-                        decimals: 3,
-                        format: "numberShort",
-                      })
-                    : "0"
-                } ETH`}
-              />
             </DataGrid>
             <DataGrid>
               <DataIndicator
@@ -189,7 +160,7 @@ export const DaoOverview = ({
               yeets.length > 0 &&
               yeets.map((yeet: YeetsItem) => {
                 return (
-                  <YeetList>
+                  <YeetList key={yeet.id}>
                     <YeetListItem>
                       <ParXs>
                         {`${formatValueTo({
@@ -208,7 +179,7 @@ export const DaoOverview = ({
           </OverviewCard>
         </>
       )}
-    </SingleColumnLayout>
+    </>
   );
 };
 
