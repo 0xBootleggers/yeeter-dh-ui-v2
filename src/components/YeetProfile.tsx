@@ -10,7 +10,6 @@ import {
 import { MolochV3Dao } from "@daohaus/moloch-v3-data";
 import { YeeterMetadata } from "../utils/types";
 import { DaoProfileAvatar } from "./DaoOverview";
-import { ButtonRouterLink } from "./ButtonRouterLink";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import styled from "styled-components";
 import { Collapser } from "./Collapser";

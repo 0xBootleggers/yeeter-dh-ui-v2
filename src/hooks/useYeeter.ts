@@ -6,6 +6,11 @@ import { GRAPH_URL, getValidChainId } from "../utils/constants";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import { YeeterItem, YeeterMetadata } from "../utils/types";
 import { listRecords } from "@daohaus/moloch-v3-data";
+import {
+  calcYeetIsActive,
+  calcYeetIsComingSoon,
+  calcYeetIsEnded,
+} from "../utils/yeetDataHelpers";
 
 export const useYeeter = ({
   chainId,
@@ -13,7 +18,7 @@ export const useYeeter = ({
   shamanAddress,
 }: {
   chainId?: ValidNetwork;
-  daoId: string;
+  daoId?: string;
   shamanAddress?: string;
 }) => {
   const chain = getValidChainId(chainId);
@@ -22,9 +27,9 @@ export const useYeeter = ({
   const { data, ...rest } = useQuery(
     ["get-yeeter", { shamanAddress }],
     async () => {
-      const res = await graphQLClient.request(GET_YEETER, {
+      const res = (await graphQLClient.request(GET_YEETER, {
         shamanAddress: shamanAddress?.toLowerCase(),
-      });
+      })) as { yeeter: YeeterItem };
       let record;
       if (chainId) {
         record = await listRecords({
@@ -32,15 +37,22 @@ export const useYeeter = ({
           filter: { dao: daoId, table: "yeetDetails" },
         });
       }
+      const yeeter = {
+        ...res.yeeter,
+        isActive:
+          res.yeeter &&
+          calcYeetIsActive(res.yeeter.startTime, res.yeeter.endTime),
+        isEnded: res.yeeter && calcYeetIsEnded(res.yeeter.endTime),
+        isComingSoon: res.yeeter && calcYeetIsComingSoon(res.yeeter.startTime),
+      } as YeeterItem;
 
       return {
-        // @ts-expect-error
-        yeeter: res.yeeter as YeeterItem,
+        yeeter,
         // @ts-expect-error
         metadata: record.items[0].parsedContent as YeeterMetadata,
       };
     },
-    { enabled: !!shamanAddress && !!chainId }
+    { enabled: !!shamanAddress && !!chainId && !!daoId }
   );
 
   return {

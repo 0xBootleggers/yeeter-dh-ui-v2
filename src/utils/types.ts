@@ -12,6 +12,9 @@ export type YeeterItem = {
   maxTarget: string;
   balance: string;
   yeetCount: string;
+  isActive: boolean;
+  isEnded: boolean;
+  isComingSoon: boolean;
 };
 
 export type YeeterMetadata = {

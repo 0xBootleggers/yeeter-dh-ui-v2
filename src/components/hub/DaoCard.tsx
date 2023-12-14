@@ -17,6 +17,7 @@ import { ListDaosQueryResDaos } from "@daohaus/moloch-v3-data";
 import { useDHConnect } from "@daohaus/connect";
 import { YeeterItem } from "../../utils/types";
 import { useDaoData } from "@daohaus/moloch-v3-hooks";
+import { useYeeter } from "../../hooks/useYeeter";
 
 const StyledDaoCard = styled.div`
   background-color: ${(props) => props.theme.secondary.step2};
@@ -62,11 +63,13 @@ export const DaoCard = ({
   chainId: string;
 }) => {
   const { dao } = useDaoData({ daoChain: chainId, daoId: yeeter.dao.id });
+  const { metadata } = useYeeter({ daoId: dao?.id, shamanAddress: yeeter.id });
+
   return (
     <StyledDaoCard className="dao-card">
       <div className="top-box">
         <div className="alert-box">
-          <ProfileAvatar size="xl" address={dao?.id} image={dao?.avatarImg} />
+          <ProfileAvatar size="xl" address={dao?.id} image={metadata?.icon} />
         </div>
       </div>
       <ParLg className="dao-title">

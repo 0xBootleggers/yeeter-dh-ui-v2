@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ProgressBar } from "./ProgressBar";
 import { formatValueTo, fromWei } from "@daohaus/utils";
 import { YeeterItem } from "../utils/types";
+import { calcProgressPerc } from "../utils/yeetDataHelpers";
 
 const ProgressRow = styled.div`
   display: flex;
@@ -23,25 +24,14 @@ const ProgressRow = styled.div`
   }
 `;
 
-const calcProgressPerc = (a: string, b: string) => {
-  const div = Number(a) / Number(b);
-  return Number(div) * 100;
-};
-
 export const YeetGoalProgress = ({ yeeter }: { yeeter: YeeterItem }) => {
-  const isComingSoon = false;
-
-  console.log("yeeter", yeeter);
-
   const percentageComplete = yeeter
     ? `${calcProgressPerc(yeeter.balance, yeeter.maxTarget)}%`
     : "0%";
 
-  console.log("percentageComplete", percentageComplete);
-
   return (
     <>
-      {!isComingSoon && (
+      {!yeeter.isComingSoon && (
         <ProgressRow>
           <DataIndicator
             label="Raised"

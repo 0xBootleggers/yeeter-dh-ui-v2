@@ -16,13 +16,12 @@ import { ValidNetwork } from "@daohaus/keychain-utils";
 import { useDaoData } from "@daohaus/moloch-v3-hooks";
 import { useYeeter } from "../hooks/useYeeter";
 import { useYeets } from "../hooks/useYeets";
-import { ButtonRouterLink } from "./ButtonRouterLink";
 import { YeetsItem } from "../utils/types";
 import { DataGrid, OverviewCard } from "./layout/Shared";
 import { YeetProfile } from "./YeetProfile";
-import { ProfileButtons } from "./ProfileButtons";
-import { ProgressBar } from "./ProgressBar";
 import { YeetGoalProgress } from "./YeetGoalProgress";
+import { YeetTimeBlock } from "./YeetTimeBlock";
+import { YeetButton } from "./YeetButton";
 
 export const TokensCard = styled(OverviewCard)`
   padding: 2.4rem;
@@ -61,31 +60,12 @@ export const MissingProfileCard = styled(Card)`
   gap: 2.3rem;
 `;
 
-const ProgressRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  .bar {
-    width: 80%;
-  }
-
-  @media ${widthQuery.xs} {
-    flex-direction: column;
-    .bar {
-      width: 100%;
-    }
-  }
-`;
-
 export const YeetList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 3rem;
+  margin-top: 2rem;
 `;
 
 export const YeetListItem = styled.div`
@@ -141,27 +121,17 @@ export const DaoOverview = ({
             )}
 
             {yeeter && <YeetGoalProgress yeeter={yeeter} />}
-            <DataGrid>
-              <DataIndicator label="Total Yeets" data={yeeter?.yeetCount} />
-            </DataGrid>
-            <DataGrid>
-              <DataIndicator
-                label="Yeet Starts"
-                data={formatShortDateTimeFromSeconds(yeeter?.startTime)}
-              />
-              <DataIndicator
-                label="Yeet Ends"
-                data={formatShortDateTimeFromSeconds(yeeter?.endTime)}
-              />
-            </DataGrid>
+            {yeeter && <YeetTimeBlock yeeter={yeeter} />}
+            <YeetButton isActive={yeeter?.isActive} />
           </OverviewCard>
           <OverviewCard>
-            {yeets &&
-              yeets.length > 0 &&
-              yeets.map((yeet: YeetsItem) => {
-                return (
-                  <YeetList key={yeet.id}>
-                    <YeetListItem>
+            <DataIndicator label="Total Yeets" data={yeeter?.yeetCount} />
+            <YeetList>
+              {yeets &&
+                yeets.length > 0 &&
+                yeets.map((yeet: YeetsItem) => {
+                  return (
+                    <YeetListItem key={yeet.id}>
                       <ParXs>
                         {`${formatValueTo({
                           value: fromWei(yeet.amount),
@@ -171,11 +141,11 @@ export const DaoOverview = ({
                       </ParXs>
                       <ParXs>{truncateAddress(yeet.contributor)}</ParXs>
                       {formatShortDateTimeFromSeconds(yeeter?.endTime)}
+                      <ParXs>{yeet.message}</ParXs>
                     </YeetListItem>
-                    <ParXs>{yeet.message}</ParXs>
-                  </YeetList>
-                );
-              })}
+                  );
+                })}
+            </YeetList>
           </OverviewCard>
         </>
       )}
