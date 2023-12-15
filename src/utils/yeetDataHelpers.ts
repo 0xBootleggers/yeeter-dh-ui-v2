@@ -14,22 +14,22 @@ export const calcDurationPerc = (start: string, end: string) => {
   return (durationUsed / yeetDuration) * 100;
 };
 
-export const calcYeetIsActive = (start: string, end: string) => {
+export const calcYeetIsActive = (yeeter: YeeterItem) => {
   const now = new Date().getTime() / 1000;
 
-  return Number(start) < now && Number(end) > now;
+  return Number(yeeter.startTime) < now && Number(yeeter.endTime) > now;
 };
 
-export const calcYeetIsEnded = (end: string) => {
+export const calcYeetIsEnded = (yeeter: YeeterItem) => {
   const now = new Date().getTime() / 1000;
 
-  return Number(end) < now;
+  return Number(yeeter.endTime) < now;
 };
 
-export const calcYeetIsComingSoon = (start: string) => {
+export const calcYeetIsComingSoon = (yeeter: YeeterItem) => {
   const now = new Date().getTime() / 1000;
 
-  return Number(start) > now;
+  return Number(yeeter.startTime) > now;
 };
 
 export const calcYeetIsFull = (yeeter: YeeterItem) => {

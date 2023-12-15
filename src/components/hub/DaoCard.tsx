@@ -18,6 +18,7 @@ import { useDHConnect } from "@daohaus/connect";
 import { YeeterItem } from "../../utils/types";
 import { useDaoData } from "@daohaus/moloch-v3-hooks";
 import { useYeeter } from "../../hooks/useYeeter";
+import { YeeterStatusTag } from "../YeeterStatusTag";
 
 const StyledDaoCard = styled.div`
   background-color: ${(props) => props.theme.secondary.step2};
@@ -81,7 +82,8 @@ export const DaoCard = ({
         </ParMd>
       </div>
       <div className="tag-box">
-        <Tag tagColor="red">{getNetworkName(chainId)}</Tag>
+        <YeeterStatusTag yeeter={yeeter} fontSize="sm" />
+        <Tag tagColor="red">{`on ${getNetworkName(chainId)}`}</Tag>
       </div>
       <ButtonRouterLink
         color="secondary"

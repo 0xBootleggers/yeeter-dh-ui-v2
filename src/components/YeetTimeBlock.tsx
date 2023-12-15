@@ -32,12 +32,6 @@ const ProgressRow = styled.div`
 `;
 
 export const YeetTimeBlock = ({ yeeter }: { yeeter: YeeterItem }) => {
-  const percentageComplete = yeeter
-    ? `${calcDurationPerc(yeeter.startTime, yeeter.endTime)}%`
-    : "0%";
-
-  console.log("percentageComplete", percentageComplete);
-
   if (yeeter.isEnded) {
     return (
       <SectionContainer>
@@ -59,6 +53,10 @@ export const YeetTimeBlock = ({ yeeter }: { yeeter: YeeterItem }) => {
       </SectionContainer>
     );
   }
+
+  const percentageComplete = yeeter
+    ? `${calcDurationPerc(yeeter.startTime, yeeter.endTime)}%`
+    : "0%";
 
   return (
     <SectionContainer>

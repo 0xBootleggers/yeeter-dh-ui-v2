@@ -40,17 +40,11 @@ export const useYeeter = ({
       }
       const yeeter = {
         ...res.yeeter,
-        isActive:
-          res.yeeter &&
-          calcYeetIsActive(res.yeeter.startTime, res.yeeter.endTime),
-        isEnded: res.yeeter && calcYeetIsEnded(res.yeeter.endTime),
-        isComingSoon: res.yeeter && calcYeetIsComingSoon(res.yeeter.startTime),
+        isActive: res.yeeter && calcYeetIsActive(res.yeeter),
+        isEnded: res.yeeter && calcYeetIsEnded(res.yeeter),
+        isComingSoon: res.yeeter && calcYeetIsComingSoon(res.yeeter),
         isFull: res.yeeter && calcYeetIsFull(res.yeeter),
       } as YeeterItem;
-
-      console.log("yeeter", yeeter);
-
-      console.log("record", record);
 
       return {
         yeeter,

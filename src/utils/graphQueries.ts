@@ -26,7 +26,11 @@ export const GET_YEETER = gql`
 
 export const GET_YEETERS = gql`
   {
-    yeeters(first: 1000) {
+    yeeters(
+      first: 1000, 
+      orderBy: createdAt, 
+      orderDirection: desc
+    ) {
       ${yeeterFields}
 
     }
