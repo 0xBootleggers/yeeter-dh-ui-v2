@@ -42,7 +42,7 @@ export const LIST_YEETS = gql`
     yeets(
       where: { yeeter: $shamanAddress }
       orderBy: createdAt
-      order: desc
+      orderDirection: desc
       first: 1000
     ) {
       id

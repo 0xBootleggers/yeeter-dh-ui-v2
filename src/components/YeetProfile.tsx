@@ -1,19 +1,22 @@
 import {
-  DataLg,
   DataMd,
   H3,
-  Link,
   ParSm,
   ParXs,
+  ProfileAvatar,
   widthQuery,
 } from "@daohaus/ui";
 import { MolochV3Dao } from "@daohaus/moloch-v3-data";
 import { YeeterMetadata } from "../utils/types";
-import { DaoProfileAvatar } from "./DaoOverview";
 import { ValidNetwork } from "@daohaus/keychain-utils";
 import styled from "styled-components";
 import { Collapser } from "./Collapser";
 import { ProfileButtons } from "./ProfileButtons";
+
+const DaoProfileAvatar = styled(ProfileAvatar)`
+  width: 18rem;
+  height: 18rem;
+`;
 
 const ProfileContainer = styled.div`
   display: flex;
