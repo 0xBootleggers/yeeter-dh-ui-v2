@@ -15,6 +15,7 @@ export type YeeterItem = {
   isActive: boolean;
   isEnded: boolean;
   isComingSoon: boolean;
+  isFull: boolean;
 };
 
 export type YeeterMetadata = {

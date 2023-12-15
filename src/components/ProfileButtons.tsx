@@ -28,7 +28,7 @@ export const ProfileButtons = ({
           href={`https://admin.daohaus.club/#/molochv3/${daoChain}/${daoId}`}
           type="external"
         >
-          DAO Admin
+          The DAO behind the Yeet
         </Link>
         {isMember && (
           <ButtonRouterLink to="update" variant="link" size="md">

@@ -2,13 +2,11 @@ import { DataIndicator, widthQuery } from "@daohaus/ui";
 import styled from "styled-components";
 import { ProgressBar } from "./ProgressBar";
 import {
-  formatDateFromSeconds,
   formatDistanceToNowFromSeconds,
-  formatLongDateFromSeconds,
   formatShortDateTimeFromSeconds,
 } from "@daohaus/utils";
 import { YeeterItem } from "../utils/types";
-import { calcCurationPerc } from "../utils/yeetDataHelpers";
+import { calcDurationPerc } from "../utils/yeetDataHelpers";
 
 const SectionContainer = styled.div`
   margin-top: 2rem;
@@ -35,8 +33,10 @@ const ProgressRow = styled.div`
 
 export const YeetTimeBlock = ({ yeeter }: { yeeter: YeeterItem }) => {
   const percentageComplete = yeeter
-    ? `${calcCurationPerc(yeeter.startTime, yeeter.endTime)}%`
+    ? `${calcDurationPerc(yeeter.startTime, yeeter.endTime)}%`
     : "0%";
+
+  console.log("percentageComplete", percentageComplete);
 
   if (yeeter.isEnded) {
     return (

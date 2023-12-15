@@ -17,7 +17,7 @@ import { useDaoData } from "@daohaus/moloch-v3-hooks";
 import { useYeeter } from "../hooks/useYeeter";
 import { useYeets } from "../hooks/useYeets";
 import { YeetsItem } from "../utils/types";
-import { DataGrid, OverviewCard } from "./layout/Shared";
+import { OverviewCard } from "./layout/Shared";
 import { YeetProfile } from "./YeetProfile";
 import { YeetGoalProgress } from "./YeetGoalProgress";
 import { YeetTimeBlock } from "./YeetTimeBlock";
@@ -106,6 +106,8 @@ export const DaoOverview = ({
 
   if (!dao) return null;
 
+  // yeet items - truncate the message and have a tool tip or expander for the whole thing?
+
   return (
     <>
       {dao && (
@@ -122,7 +124,7 @@ export const DaoOverview = ({
 
             {yeeter && <YeetGoalProgress yeeter={yeeter} />}
             {yeeter && <YeetTimeBlock yeeter={yeeter} />}
-            <YeetButton isActive={yeeter?.isActive} />
+            <YeetButton isActive={yeeter?.isActive} isFull={yeeter?.isFull} />
           </OverviewCard>
           <OverviewCard>
             <DataIndicator label="Total Yeets" data={yeeter?.yeetCount} />

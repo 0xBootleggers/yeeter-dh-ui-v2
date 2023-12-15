@@ -71,12 +71,12 @@ export const YeetProfile = ({
           <DetailsContainer>
             <div>
               <DataMd>Details</DataMd>
-              <ParSm>{metadata.projectDetails}</ParSm>
+              <ParSm>{metadata.projectDetails || "?????"}</ParSm>
             </div>
             <div>
               <DataMd>Mission</DataMd>
 
-              <ParXs>{metadata.missionStatement}</ParXs>
+              <ParXs>{metadata.missionStatement || "?????"}</ParXs>
             </div>
             <ProfileButtons daoChain={daoChain} daoId={dao.id} />
           </DetailsContainer>

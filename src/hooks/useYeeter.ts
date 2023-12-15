@@ -10,6 +10,7 @@ import {
   calcYeetIsActive,
   calcYeetIsComingSoon,
   calcYeetIsEnded,
+  calcYeetIsFull,
 } from "../utils/yeetDataHelpers";
 
 export const useYeeter = ({
@@ -44,6 +45,7 @@ export const useYeeter = ({
           calcYeetIsActive(res.yeeter.startTime, res.yeeter.endTime),
         isEnded: res.yeeter && calcYeetIsEnded(res.yeeter.endTime),
         isComingSoon: res.yeeter && calcYeetIsComingSoon(res.yeeter.startTime),
+        isFull: res.yeeter && calcYeetIsFull(res.yeeter),
       } as YeeterItem;
 
       console.log("yeeter", yeeter);
@@ -54,9 +56,9 @@ export const useYeeter = ({
         yeeter,
         metadata: record?.items[0]
           ? (record.items[0].parsedContent as YeeterMetadata)
-          : {
+          : ({
               daoId: daoId,
-            },
+            } as YeeterMetadata),
       };
     },
     { enabled: !!shamanAddress && !!chainId && !!daoId }
