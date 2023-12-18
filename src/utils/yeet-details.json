@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "https://raw.githubusercontent.com/HausDAO/daohaus-monorepo/develop/libs/moloch-v3-data/src/subgraph/json-schema/dao-profile.json",
+  "title": "Yeet Details",
+  "description": "Yeet Campaign Details",
+  "type": "object",
+  "properties": {
+    "daoId": {
+      "description": "The unique identifier and contract address for a DAO",
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{40}$"
+    },
+    "table": {
+      "description": "Table field on the Record entity indexed in the DAOhaus subgraph",
+      "type": "string",
+      "enum": ["yeetDetails"]
+    },
+    "queryType": {
+      "description": "Indicates if the Record entities indexed in the DAOhaus subgraph should be queried for latest or as a list",
+      "type": "string",
+      "enum": ["latest"]
+    },
+    "projectDetails": {
+      "description": "Project Details",
+      "type": "string"
+    },
+    "missionStatement": {
+      "description": "Mission Statement",
+      "type": "string"
+    },
+    "campaignImg": {
+      "description": "Image for the campaign",
+      "properties": {
+        "callbackUrl": { "$ref": "#/definitions/saneUrl" }
+      }
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": { "$ref": "#/definitions/saneUrl" }
+        }
+      }
+    }
+  },
+  "required": ["daoId", "name", "table", "queryType"],
+  "definitions": {
+    "saneUrl": { "format": "uri", "pattern": "^https?://" }
+  }
+}

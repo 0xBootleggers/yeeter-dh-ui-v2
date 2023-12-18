@@ -4,11 +4,13 @@ import { MolochFields } from "@daohaus/moloch-v3-fields";
 import { APP_FORM } from "../legos/forms";
 import { AppFieldLookup } from "../legos/legoConfig";
 import { useCurrentDao } from "@daohaus/moloch-v3-hooks";
-import { useYeeter } from "../hooks/useYeeter";
+import { useCurrentYeeter } from "../contexts/CurrentYeeterContext";
 
 export const Yeet = () => {
   const { daoChain } = useCurrentDao();
-  // const {} = useYeeter();
+  const { shamanAddress } = useCurrentYeeter();
+
+  if (!shamanAddress) return null;
 
   return (
     <FormBuilder

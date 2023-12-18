@@ -13,6 +13,7 @@ multiplier
 minTribute
 maxTarget
 balance
+yeetCount
 `;
 
 export const GET_YEETER = gql`
@@ -25,7 +26,11 @@ export const GET_YEETER = gql`
 
 export const GET_YEETERS = gql`
   {
-    yeeters(first: 1000) {
+    yeeters(
+      first: 1000, 
+      orderBy: createdAt, 
+      orderDirection: desc
+    ) {
       ${yeeterFields}
 
     }
@@ -37,7 +42,7 @@ export const LIST_YEETS = gql`
     yeets(
       where: { yeeter: $shamanAddress }
       orderBy: createdAt
-      order: desc
+      orderDirection: desc
       first: 1000
     ) {
       id
