@@ -32,7 +32,7 @@ export const APP_FORM: Record<string, CustomFormLego> = {
     title: "NEW YEET",
     requiredFields: {
       daoName: true,
-      maxTarget: true,
+      goal: true,
       startTime: true,
       endTime: true,
       minTribute: true,
@@ -78,7 +78,7 @@ export const APP_FORM: Record<string, CustomFormLego> = {
         ],
       },
       {
-        id: "maxTarget",
+        id: "goal",
         type: "toWeiInput",
         label: "Fundraising Goal (ETH)",
         placeholder: "69,420",

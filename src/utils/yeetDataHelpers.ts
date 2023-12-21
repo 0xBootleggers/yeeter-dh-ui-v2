@@ -33,5 +33,5 @@ export const calcYeetIsComingSoon = (yeeter: YeeterItem) => {
 };
 
 export const calcYeetIsFull = (yeeter: YeeterItem) => {
-  return Number(yeeter.balance) >= Number(yeeter.maxTarget);
+  return Number(yeeter.balance) >= Number(yeeter.goal);
 };

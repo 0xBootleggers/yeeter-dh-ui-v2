@@ -35,7 +35,7 @@ export const YEETER_CONTRACTS: KeychainList = {
   },
   ETH_YEETER_SINGLETON: {
     "0x1": "",
-    "0x5": "0xa65ada3897da3834ea5cc407261cad5d33f43f8b",
+    "0x5": "0x4cCaeF82053aDa5d14188Dbe241b91dF9F1Cb151",
     "0xa": "",
   },
 };

@@ -9,7 +9,7 @@ export type YeeterItem = {
   isShares: boolean;
   multiplier: string;
   minTribute: string;
-  maxTarget: string;
+  goal: string;
   balance: string;
   yeetCount: string;
   isActive: boolean;
