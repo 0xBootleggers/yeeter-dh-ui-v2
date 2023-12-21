@@ -11,7 +11,7 @@ startTime
 isShares
 multiplier
 minTribute
-maxTarget
+goal
 balance
 yeetCount
 `;

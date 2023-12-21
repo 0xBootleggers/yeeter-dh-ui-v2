@@ -26,7 +26,7 @@ const ProgressRow = styled.div`
 
 export const YeetGoalProgress = ({ yeeter }: { yeeter: YeeterItem }) => {
   const percentageComplete = yeeter
-    ? `${calcProgressPerc(yeeter.balance, yeeter.maxTarget)}%`
+    ? `${calcProgressPerc(yeeter.balance, yeeter.goal)}%`
     : "0%";
 
   return (
@@ -40,7 +40,7 @@ export const YeetGoalProgress = ({ yeeter }: { yeeter: YeeterItem }) => {
               decimals: 3,
               format: "numberShort",
             })} of ${formatValueTo({
-              value: fromWei(yeeter.maxTarget),
+              value: fromWei(yeeter.goal),
               decimals: 3,
               format: "numberShort",
             })} ETH`}

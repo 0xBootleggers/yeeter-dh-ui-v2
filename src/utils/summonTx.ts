@@ -143,7 +143,7 @@ const assembleShamanParams = ({
   const yeeterSingleton = YEETER_CONTRACTS["ETH_YEETER_SINGLETON"][chainId];
   const startTime = formValues["startTime"];
   const endTime = formValues["endTime"];
-  const maxTarget = formValues["maxTarget"];
+  const goal = formValues["goal"];
   const minTribute = formValues["minTribute"];
   // const multiplier = formValues["multiplier"];
   const multiplier = DEFAULT_YEETER_VALUES.multiplier;
@@ -156,7 +156,7 @@ const assembleShamanParams = ({
     !isNumberish(endTime) ||
     !isNumberish(minTribute) ||
     !isNumberish(multiplier) ||
-    !isNumberish(maxTarget) ||
+    !isNumberish(goal) ||
     !yeeterSingleton
   ) {
     console.log("ERROR: Form Values", formValues);
@@ -183,7 +183,7 @@ const assembleShamanParams = ({
       isShares,
       minTribute,
       multiplier,
-      maxTarget,
+      goal,
       feeRecipients,
       feeAmounts,
     ]
@@ -253,21 +253,6 @@ const governanceConfigTX = (formValues: SummonParams) => {
   }
   throw new Error("Encoding Error");
 };
-
-// const tokenConfigTX = (formValues: SummonParams) => {
-//   const pauseVoteToken = !formValues.votingTransferable;
-//   const pauseNvToken = !formValues.nvTransferable;
-
-//   const encoded = encodeFunction(LOCAL_ABI.BAAL, "setAdminConfig", [
-//     pauseVoteToken,
-//     pauseNvToken,
-//   ]);
-
-//   if (isString(encoded)) {
-//     return encoded;
-//   }
-//   throw new Error("Encoding Error");
-// };
 
 const metadataConfigTX = (formValues: SummonParams, posterAddress: string) => {
   const { daoName } = formValues;
